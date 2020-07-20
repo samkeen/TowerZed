@@ -20,16 +20,18 @@ public class Waypoint : MonoBehaviour
             Mathf.RoundToInt(transform.position.z / GridSize) * GridSize
         );
     }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void SetColor(Color color)
     {
-        
-    }
+        var transformName = "Top";
+        var topTransform = transform.Find(transformName);
+        if (topTransform is null)
+        {
+            Debug.LogError($"Unable to find Transform of name: {transformName}");
+        }
+        else
+        {
+            topTransform.GetComponent<MeshRenderer>().material.color = color;
+        }
+    } 
 }
