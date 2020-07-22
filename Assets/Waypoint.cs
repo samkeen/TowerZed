@@ -7,19 +7,24 @@ public class Waypoint : MonoBehaviour
     
     const int GridSize = 10;
     private Vector2Int _gridPos;
+    public bool isExplored = false;
+    public Waypoint exploredFrom;
 
     public int GetGridSize()
     {
         return GridSize;
     }
-
+    /// <summary>
+    /// x,y position for this waypoint
+    /// </summary>
+    /// <returns>void</returns>
     public Vector2Int GetGridPos()
     {
         return new Vector2Int(
-            Mathf.RoundToInt(transform.position.x / GridSize) * GridSize,
-            Mathf.RoundToInt(transform.position.z / GridSize) * GridSize
+            Mathf.RoundToInt(transform.position.x / GridSize),
+            Mathf.RoundToInt(transform.position.z / GridSize)
         );
-    }
+    }    
 
     public void SetColor(Color color)
     {
@@ -33,5 +38,11 @@ public class Waypoint : MonoBehaviour
         {
             topTransform.GetComponent<MeshRenderer>().material.color = color;
         }
-    } 
+    }
+
+    public void setExplored(Waypoint exploredFrom)
+    {
+        this.exploredFrom = exploredFrom;
+        SetColor(Color.magenta);
+    }
 }

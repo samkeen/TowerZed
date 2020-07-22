@@ -29,18 +29,17 @@ public class CubeEditor : MonoBehaviour
     {
         var gridSize = _waypoint.GetGridSize();
         transform.position = new Vector3(
-            _waypoint.GetGridPos().x,
+            _waypoint.GetGridPos().x * gridSize,
             0f,
             // the Vector2Int returned uses x,y so we use y for z here.
-            _waypoint.GetGridPos().y
+            _waypoint.GetGridPos().y * gridSize
         );;
     }
 
     private void UpdateLabel()
     {
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
-        var gridSize = _waypoint.GetGridSize();
-        var cubeLabel = $"{_waypoint.GetGridPos().x / gridSize},{_waypoint.GetGridPos().y / gridSize}";
+        var cubeLabel = $"{_waypoint.GetGridPos().x},{_waypoint.GetGridPos().y}";
         textMesh.text = cubeLabel;
         gameObject.name = cubeLabel;
     }
