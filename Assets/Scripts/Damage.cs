@@ -14,7 +14,6 @@ public class Damage : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        print($"Boom: {other}");
         ProcessHit();
         if (hitPoints<=0)
         {
