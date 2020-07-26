@@ -14,11 +14,13 @@ public class Tower : MonoBehaviour
     {
         if (targetEnemy)
         {
+            print($"enemy found: {targetEnemy},{objectToPan}");
             objectToPan.LookAt(targetEnemy);
             FireAtEnemy();
         }
         else
         {
+            print($"No enemy found");
             Shoot(false);
         }
 

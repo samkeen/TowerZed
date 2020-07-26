@@ -32,7 +32,7 @@ public class Waypoint : MonoBehaviour
         var topTransform = transform.Find(transformName);
         if (topTransform is null)
         {
-            Debug.LogError($"Unable to find Transform of name: {transformName}");
+            Debug.LogError($"Unable to find Transform of name: {transformName}, {transform}");
         }
         else
         {
